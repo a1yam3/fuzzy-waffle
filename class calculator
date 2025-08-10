@@ -1,0 +1,56 @@
+class Calculator
+{
+	int sum;
+	//to adding 2 numbers
+	// static polymophism
+	//method overloading- same function name but different arguments
+	void add(int a, int b)
+	{
+		sum= a+b;
+		System.out.println(sum);
+	}
+
+
+	//to add 3 numbers
+	void add(int a, int b, int c)
+	{
+		sum= a+b+c;
+		System.out.println(sum);
+	}
+
+
+	void add(float a, float b)
+	{
+		sum= a+b;
+		System.out.println(sum);
+
+
+	void add(int a[])
+	{
+		int sum=0;
+		for(int i=0;i<a.length;i++)
+		{
+		sum+=a[i];
+		}
+		System.out.println(sum);
+	}
+
+
+	public static void main(String args[])
+	{
+		Calculator obj= new Calculator();
+		Scanner in= new Scanner (System.in);
+		System.out.println("Enter 2 values");
+		int a =in.nextInt();
+		int b=in.nextInt();
+		obj.add(a,b)
+		System.out.println("Enter 3 values");
+		a =in.nextInt();
+		b=in.nextInt();
+		int c =in.nextInt();
+		obj.add(a,b,c);
+
+		obj.add(4.0f, 5.5f);
+	Calculator.java* 55L, 926B
+	}
+}
