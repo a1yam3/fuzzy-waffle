@@ -54,3 +54,125 @@ class Calculator
 	Calculator.java* 55L, 926B
 	}
 }
+
+
+// calculator with exceptions
+import java.util.Scanner;
+
+class DivideByZeroException extends Exception
+{
+	public DivideByZeroException(String message)
+	{
+		super(message);
+	}
+}
+
+interface Calculator
+{
+	public void add();
+	public void sub();
+	public void multiply();
+	public void divide();
+	public void result();
+}
+
+
+public abstract class Calc_Abs implements Calculator
+{
+	int a;
+	int b;
+	
+	Calc_Abs(int a, int b)
+	{
+		this.a=a;
+		this.b=b;
+	}
+	
+	public abstract void result();
+}
+
+public class Calc_Imp extends Calc_Abs
+{
+
+	public int a;
+	public int b;
+	public int r;
+	Calc_Imp(int a, int b)
+	{
+		a=super.a;
+		b=super.b;
+	}
+	
+	void add()
+	{
+		int r1=a+b;
+		int r=r1;
+		
+	}
+
+	void sub()
+	{
+		int r2=a-b;
+		r=r2;
+	}
+	void multiply()
+	{
+		int r3=a*b;
+		r=r3;
+	}
+
+	void divide()
+	{
+		try 
+		{	
+			if(b==0)
+			{
+				throw new DivideByZeroException ("Cannot divide by zero");
+			}
+			else
+			{
+				int r4=a/b;
+				r=r4;
+			}
+		}
+	
+		catch(DivideByZeroException e)
+		{
+		System.out.println("Exception occured: "+e.getMessage());
+
+		}
+	}
+
+	int result(int r)
+	{
+		return 	r;
+	}
+
+}
+
+class Main_Calc
+{
+	public static void main(String args[])
+	{	
+		Scanner in=new Scanner(System.in);
+		System.out.println("This calculator will take two values and perform the 4 basic operations on them.");
+		System.out.println(" ");
+		System.out.println("Enter first integer number.");
+		int i=in.nextInt();
+		System.out.println("Enter second integer number.");
+		int j=in.nextInt();
+		System.out.println(" ");
+
+		Calc_Imp obj=new Calc_Imp(i,j);
+		
+		obj.add();
+		System.out.println("Addition: "+obj.result());		
+		obj.sub();
+		System.out.println("Subtraction: "+obj.result());
+		obj.multiply();
+		System.out.println("Multiplication: "+obj.result());		
+		obj.divide();
+		System.out.println("Division: "+obj.result());
+	}
+}
+
